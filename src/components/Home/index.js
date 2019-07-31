@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './home.css';
 
 class index extends Component {
     render() {
