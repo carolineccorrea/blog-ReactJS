@@ -4,10 +4,11 @@ import firebase from './firebase'
 import Home from './components/Home'
 import Login from './components/Login'
 import Header from './components/Header'
+import Dashboard from './components/Dashboard'
 
 class App extends Component {
     state = {
-        firebaseinit: false
+        firebaseinit: true
     }
 
     componentDidMount(){
@@ -23,6 +24,7 @@ class App extends Component {
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/login" component={Login}/>
+                    <Route exact path="/dashboard" component={Dashboard}/>
                 </Switch>
             </BrowserRouter>
         ) : (

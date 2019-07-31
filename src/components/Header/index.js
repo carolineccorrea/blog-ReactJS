@@ -1,9 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import { Toolbar } from '@material-ui/core';
+import { AppBar } from '@material-ui/core';
 import './header.css'
 function Header(){
         return (
-            <header id="main-header">
+            <AppBar position="static">
+                <Toolbar>
+                <header id="main-header">
                 <div className="header-content">
                     <Link to='/'>
                             BLOG
@@ -14,6 +18,9 @@ function Header(){
 
                 </div>
             </header>
+                    
+                </Toolbar>
+            </AppBar>
         );
 
 }

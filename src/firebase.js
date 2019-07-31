@@ -37,6 +37,11 @@ class Firebase {
         })
     }
 
+    getCurrent(){
+        //verifica se a pessoa está logada
+        return app.auth().currentUser &&  app.auth().currentUser.email
+    }
+
 }
 
 export default new Firebase();

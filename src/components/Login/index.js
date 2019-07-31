@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {Link, withRouter} from 'react-router-dom'
+import { TextField } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import firebase from '../../firebase';
 
 class Login extends Component {
@@ -14,6 +16,13 @@ class Login extends Component {
         this.login = this.login.bind(this);
     }
 
+    componentDidMount(){
+        // verifica se tem algum usuário logado
+        if(firebase.getCurrent()){
+            return this.props.history.replace('dashboard');
+        }
+    }
+
     login = async () => {
         const {email,password} = this.state;
         try{
@@ -25,9 +34,11 @@ class Login extends Component {
         }catch(error){
             alert(error.message);
         }
+        this.props.history.replace('/dashboard');
     }
     entrar(event){
         event.preventDefault();
+        this.login();
 
     }
     render() {
@@ -35,14 +46,13 @@ class Login extends Component {
             <div>
                 <form onSubmit={this.entrar} id="login">
                     <label>email:</label>
-                    <input type="email" autoFocus value={this.state.email}
+                    <TextField type="email" autoComplete="off" autoFocus value={this.state.email}
                     onChange={(e =>this.setState({email: e.target.value}))}
-                    />
+                    /><br></br>
                     <label>password:</label>
-                    <input type="password" value={this.state.password}
-                    onChange={(e =>this.setState({password: e.target.value}))}
-                    />
-                    <button type="submit">Entrar...</button>
+                    <TextField type="password" autoComplete="off" value={this.state.password} onChange={(e =>this.setState({password: e.target.value}))} />
+                    <br></br>
+                    <Button type="submit" color="primary" variant="contained">Entrar...</Button> <br></br>
                     <Link to='/register'>Ainda nao possui uma conta ?</Link>
                 </form>    
             </div>
