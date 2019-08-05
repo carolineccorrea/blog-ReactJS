@@ -15,6 +15,9 @@ function Header(){
                         <Link to='/login'>
                             ENTRAR
                         </Link>
+                        <Link to ='/register'>
+                            REGISTRAR
+                        </Link>
 
                 </div>
             </header>
