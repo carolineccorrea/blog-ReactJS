@@ -27,7 +27,7 @@ class Firebase {
         await app.auth().createUserWithEmailAndPassword(email,password);
         const uid = app.auth().currentUser.uid;
         return app.database().ref('usuarios').child(uid).set({
-            nome: name
+            nome: name, email: email, password: password
         })
     }
 

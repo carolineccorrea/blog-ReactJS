@@ -16,6 +16,10 @@ const MyButton = styled(Button)({
     padding: '0 30px',
   });
 
+const containerForm = {
+    textAlign:'center',
+}
+
  
 
 class Login extends Component {
@@ -60,18 +64,18 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.entrar} id="login">
+                <form onSubmit={this.entrar} id="login" style={containerForm}>
                     <div style={{margin: 40}}>
                     <label>email:</label>
                     <TextField type="email" autoComplete="off" autoFocus margin="normal" value={this.state.email}
                     onChange={(e =>this.setState({email: e.target.value}))}
                     />
                     </div>
-                    <div style={{margin: 15}}>
+                    <div style={{margin: 15, paddingRight:22}}>
                     <label>password:</label>
                     <TextField type="password" autoComplete="off" margin="normal" value={this.state.password} onChange={(e =>this.setState({password: e.target.value}))} />
                     </div>
-                    <div style={{paddingLeft: 60}}> 
+                    <div style={{paddingLeft: 50}}> 
                     <MyButton type="submit" color="primary" variant="contained">Entrar...</MyButton> <br></br>
                     <Link to='/register'>Ainda nao possui uma conta ?</Link>
                     </div>
