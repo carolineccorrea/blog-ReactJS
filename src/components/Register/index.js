@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import { TextField } from '@material-ui/core';
 import { Button } from '@material-ui/core';
+import { styled } from '@material-ui/styles';
 
 import firebase from '../../firebase';
 
@@ -10,7 +11,9 @@ import firebase from '../../firebase';
     textAlign:'center',
   }
 
-
+  const Txf = styled(TextField)({
+    width:'25%',
+  });
  
 
 class Register extends Component {
@@ -48,17 +51,18 @@ class Register extends Component {
 
     render() {
         return (
-            <div>           
+            <div>
+                       
               <form onSubmit={this.regis} style={containerForm}>
               <h1 className="register-h1">Cadastre-se agora</h1>
               <div style={{paddingTop:20}}>
-              <TextField type="text" variant="outlined" autoComplete="off" label="Nome" onChange={(e)=> this.setState({name: e.target.value})} />
+              <Txf type="text" variant="outlined" autoComplete="off" label="Nome" onChange={(e)=> this.setState({name: e.target.value})} />
                </div> 
               <div style={{paddingTop:20}}>   
-              <TextField type="email" variant="outlined" label="Email" onChange = {(e) => this.setState({email: e.target.value})} />
+              <Txf type="email" variant="outlined" label="Email" onChange = {(e) => this.setState({email: e.target.value})} />
              </div>
             <div style={{paddingTop:20}}>
-             <TextField type="password" variant="outlined" label="Senha" onChange = { (e) => this.setState({password: e.target.value})} />
+             <Txf type="password" variant="outlined" label="Senha" onChange = { (e) => this.setState({password: e.target.value})} />
             </div>
               <div style={{margin:40}}>
             <Button type="submit" variant="contained" color="primary">Cadastrar</Button>
