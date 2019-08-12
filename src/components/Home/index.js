@@ -35,6 +35,8 @@ class Home extends Component {
                     <article key={post.key}>
                         <header>
                             <div>
+                                <p><h3> >>>> BEM VINDO À HOME...</h3></p>
+                                <h3>>>> FAÇA O LOGIN OU REGISTRE-SE...</h3>
                                 <strong>{post.titulo}</strong>
                                 <strong>{post.imagem}</strong>
                             </div>

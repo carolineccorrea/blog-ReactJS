@@ -6,6 +6,7 @@ import Login from './components/Login'
 import Header from './components/Header'
 import Dashboard from './components/Dashboard'
 import Register from './components/Register'
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 class App extends Component {
     state = {
@@ -20,6 +21,8 @@ class App extends Component {
     }
     render() {
         return this.state.firebaseinit !== false ? (
+            <React.Fragment>
+      <CssBaseline />
             <BrowserRouter>
             <Header/>
                 <Switch>
@@ -29,9 +32,13 @@ class App extends Component {
                     <Route exact path="/register" component={Register}/>
                 </Switch>
             </BrowserRouter>
+            </React.Fragment>
         ) : (
             <h1>Carregando........</h1>
         )
+        
+      
+   
     }
 }
 

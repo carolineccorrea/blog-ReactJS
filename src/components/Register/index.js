@@ -12,7 +12,7 @@ import firebase from '../../firebase';
   }
 
   const Txf = styled(TextField)({
-    width:'25%',
+    width:'20%',
   });
  
 

@@ -17,7 +17,7 @@ const MyButton = styled(Button)({
   });
 
   const Txf = styled(TextField)({
-    width:'25%',
+    width:'20%',
   });
 
 const containerForm = {
@@ -32,7 +32,8 @@ class Login extends Component {
 
         this.state = {
             email:'',
-            password:''
+            password:'',
+            userLogin:false,
         }
         this.entrar = this.entrar.bind(this);
         this.login = this.login.bind(this);
@@ -53,12 +54,22 @@ class Login extends Component {
             await firebase.login(email,password).catch((error)=>{
                 if (error.code === 'auth/user-not-found'){
                     alert("Usuário nao existe");
+                    this.props.history.replace('/');
+                    return null;
                 }
-            })
+            });
+            this.setState({userLogin: true})
+  
         }catch(error){
             alert(error.message);
         }
-        this.props.history.replace('/dashboard');
+
+        if (this.state.userLogin === false){
+            this.props.history.replace('/');
+         }else{
+            this.props.history.replace('/dashboard');
+        }
+
     }
     entrar(event){
         event.preventDefault();
@@ -80,7 +91,7 @@ class Login extends Component {
                     <label>password:</label>
                     <Txf type="password" autoComplete="off" margin="normal" value={this.state.password} onChange={(e =>this.setState({password: e.target.value}))} />
                     </div>
-                    <div style={{paddingLeft: 50}}> 
+                    <div style={{paddingLeft: 45}}> 
                     <MyButton type="submit" color="primary" variant="contained">Entrar...</MyButton> <br></br>
                     <Link to='/register'>Ainda nao possui uma conta ?</Link>
                     </div>
