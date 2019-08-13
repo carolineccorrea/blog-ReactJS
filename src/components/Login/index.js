@@ -41,11 +41,11 @@ class Login extends Component {
     
 
     componentDidMount(){
-         /* codigo comentado para poder manipular a view 
-          verifica se tem algum usuário logado
-          if(firebase.getCurrent()){
-            return this.props.history.replace('dashboard');
-          }*/
+          //codigo comentado para poder manipular a view 
+         // verifica se tem algum usuário logado
+          if(firebase.getCurrent() && this.props.userLogin){
+            return this.props.history.replace('/dashboard');
+          }
     }
 
     login = async () => {
@@ -63,7 +63,7 @@ class Login extends Component {
         }catch(error){
             alert(error.message);
         }
-
+      
         if (this.state.userLogin === false){
             this.props.history.replace('/');
          }else{

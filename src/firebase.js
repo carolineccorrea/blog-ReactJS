@@ -22,12 +22,15 @@ class Firebase {
     login(email, password){
         return app.auth().signInWithEmailAndPassword(email,password)
     }
+    logout(){
+        return app.auth().signOut();
+    }
 
     async register(name,email,password){
         await app.auth().createUserWithEmailAndPassword(email,password);
         const uid = app.auth().currentUser.uid;
         return app.database().ref('usuarios').child(uid).set({
-            nome: name, email: email, password: password
+            nome: name
         })
     }
 
@@ -40,6 +43,15 @@ class Firebase {
     getCurrent(){
         //verifica se a pessoa está logada
         return app.auth().currentUser &&  app.auth().currentUser.email
+    }
+
+    async getUserName(callback){
+        if(!app.auth().currentUser){
+            return null;
+        }
+
+        const uid = app.auth().currentUser.uid;
+        await app.database().ref('usuarios').child(uid).once('value').then(callback);
     }
 
 }
