@@ -41,8 +41,8 @@ class Dashboard extends Component {
             <div>
                 <h3>olá {this.state.nome}</h3>
                 <p>Logado com {this.state.email}</p>
-                <Button variant="contained" color="secondary"><Link to ="/dashboard/new">Novo Post</Link></Button><br/>
-                <Button variant="contained" color="primary" onClick= { () => this.logout() }>Sair</Button>
+                <Button variant="contained" color="secondary"><Link to ="/dashboard/new">Novo Post</Link></Button><br></br>
+                <Button variant="contained" color="primary" onClick= { () => this.logout() }>Sair</Button><br></br>
             </div>
         );
     }
